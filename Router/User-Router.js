@@ -3,6 +3,7 @@ const express = require('express');
 const Userrouter = express.Router();
 const rootdir = require('../utils/pathUtil');
 const homecontroller = require('../controller/home');
+Userrouter.get("/",homecontroller.getHome);
  Userrouter.get("/home",homecontroller.getHome);
   Userrouter.get("/Login",homecontroller.getLogin);
 Userrouter.get("/home/form",homecontroller.getForm);
