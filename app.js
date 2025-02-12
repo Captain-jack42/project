@@ -18,5 +18,5 @@ app.use(errorcontroller.Error404);
 
 const port = 3001;
 app.listen(port,()=>{
-  console.log(`server Started At: http://localhost:${port}/home`);
+  console.log(`server Started At: http://localhost:${port}/`);
 });
