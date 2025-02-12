@@ -1,4 +1,5 @@
 const Home = require("../models/Home");
+const Job = require("../models/PostJob");
 const Signup = require("../models/Signup");
 
 exports.getHostHome =(req,res,next)=>{
@@ -17,9 +18,23 @@ exports.postForm=(req,res,next)=>{
   res.render('home');
 };
 
+exports.postJob=(req,res,next)=>{
+  const {JobTitle,Company,Location,JobType,SalaryRange,JobDescription,DeadLine} = req.body;
+  console.log("job posted");
+  const job = new Job(JobTitle,Company,Location,JobType,SalaryRange,JobDescription,DeadLine);
+  job.save();
+  res.render('home');
+};
+
 exports.getWorker=(req,res,next)=>{
   const registeredAc = Home.fetchAll(registeredAc=>{
     res.render('worker',{registeredAc:registeredAc});
+  });
+}
+
+exports.getPostedJob=(req,res,next)=>{
+  const PostedJob = Job.fetchAll(PostedJob=>{
+    res.render('joblisting',{PostedJob:PostedJob});
   });
 }
 
